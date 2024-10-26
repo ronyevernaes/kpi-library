@@ -26,3 +26,22 @@ bun run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Roadmap
+
+- [ ] Layouts
+  - [ ] List KPIs
+  - [ ] Build Layout
+    - [ ] Add KPI/DataViz to Layout
+  - [ ] Edit Layout
+  - [ ] Render Layout
+- [ ] Storyboards
+  - [ ] Create Storyboard
+    - [ ] Add Layout
+    - [ ] Add insights
+  - [ ] Edit Storyboard
+  - [ ] Share Storyboard
+- [ ] Access management
+  - [ ] Request acccess
+  - [ ] Approve access
+  - [ ] Deny access
