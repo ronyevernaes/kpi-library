@@ -17,3 +17,7 @@ main > div {
 h1 {
   @apply text-3xl font-bold text-center;
 }
+
+input[type="text"] {
+  @apply border border-slate-400 rounded-xl p-3;
+}
