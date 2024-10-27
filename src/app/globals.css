@@ -5,3 +5,11 @@
 body {
   @apply bg-white;
 }
+
+main {
+  @apply m-2 p-4 border border-gray-400 rounded-xl bg-slate-200 h-[calc(100vh-16px)];
+}
+
+main > div {
+  @apply flex flex-col items-center justify-center;
+}
