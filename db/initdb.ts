@@ -43,7 +43,60 @@ const kpis = [
     currentValue: 1800000,
     targetDate: new Date('2024-12-31'),
     currentDate: new Date('2024-09-30'),
-  }
+  },
+];
+
+const layouts = [
+  {
+    name: 'Sales Dashboard',
+    description: 'A dashboard for displaying sales data',
+    type: 'LAYOUT',
+    labels: 'sales',
+    kpis: '[1,2]',
+  },
+  {
+    name: 'Expenses Dashboard',
+    description: 'A dashboard for displaying expenses data',
+    type: 'LAYOUT',
+    labels: 'expenses',
+    isFavorite: true,
+    kpis: '[3]',
+  },
+  {
+    name: 'Profit Margin Dashboard',
+    description: 'A dashboard for displaying profit margin data',
+    type: 'LAYOUT',
+    labels: 'profit_margin',
+    kpis: '[2]',
+  },
+];
+
+const storyboards = [
+  {
+    name: 'Sales Storyboard',
+    description: 'A storyboard for displaying sales data',
+    type: 'STORYBOARD',
+    labels: 'sales',
+    layoutId: 1,
+    insights: "['Sales trends over time', 'Top 5 sales performers']",
+  },
+  {
+    name: 'Expenses Storyboard',
+    description: 'A storyboard for displaying expenses data',
+    type: 'STORYBOARD',
+    labels: 'expenses',
+    layoutId: 2,
+    insights: "['Expenses trends over time', 'Top 5 expenses contributors']",
+  },
+  {
+    name: 'Profit Margin Storyboard',
+    description: 'A storyboard for displaying profit margin data',
+    type: 'STORYBOARD',
+    labels: 'profit_margin',
+    isFavorite: true,
+    layoutId: 3,
+    insights: "['Profit margin trends over time', 'Top 5 profit margin leaders']",
+  },
 ];
 
 db.prepare(`
@@ -101,6 +154,65 @@ async function initKpis() {
       currentDate: kpi.currentDate.toISOString(),
     });
   }
+};
+
+async function initLayouts() {
+  const stmt = db.prepare(`
+    INSERT INTO assets (
+      name,
+      description,
+      type,
+      labels,
+      isFavorite,
+      kpis
+    ) VALUES (
+      @name,
+      @description,
+      @type,
+      @labels,
+      @isFavorite,
+      @kpis
+    )
+`);
+
+  for (const layout of layouts) {
+    stmt.run({
+      ...layout,
+      labels: layout.labels,
+      isFavorite: layout.isFavorite ? 1 : 0,
+    });
+  }
+}
+async function initStoryboards() {
+  const stmt = db.prepare(`
+    INSERT INTO assets (
+      name,
+      description,
+      type,
+      labels,
+      isFavorite,
+      layoutId,
+      insights
+    ) VALUES (
+      @name,
+      @description,
+      @type,
+      @labels,
+      @isFavorite,
+      @layoutId,
+      @insights
+    )
+`);
+
+  for (const storyboard of storyboards) {
+    stmt.run({
+      ...storyboard,
+      labels: storyboard.labels,
+      isFavorite: storyboard.isFavorite ? 1 : 0,
+    });
+  }
 }
 
 initKpis();
+initLayouts();
+initStoryboards();
