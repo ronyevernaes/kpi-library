@@ -11,6 +11,7 @@ export interface Asset {
   description: string;
   type: AssetType;
   labels?: string;
+  isFavorite?: boolean;
   createdAt: Date;
   updatedAt: Date;
 }

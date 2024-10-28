@@ -8,6 +8,7 @@ const kpis = [
     description: 'Monthly sales for the last 6 months',
     type: 'KPI',
     labels: 'sales',
+    isFavorite: true,
     targetValue: 50000,
     currentValue: 48000,
     targetDate: new Date('2024-12-31'),
@@ -43,7 +44,7 @@ const kpis = [
     targetDate: new Date('2024-12-31'),
     currentDate: new Date('2024-09-30'),
   }
-]
+];
 
 db.prepare(`
   CREATE TABLE IF NOT EXISTS assets (
@@ -52,6 +53,7 @@ db.prepare(`
     description TEXT,
     type TEXT NOT NULL,
     labels TEXT,
+    isFavorite BOOLEAN DEFAULT 0,
     createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     targetValue REAL, -- For KPIs only
@@ -72,6 +74,7 @@ async function initKpis() {
       description,
       type,
       labels,
+      isFavorite,
       targetValue,
       currentValue,
       targetDate,
@@ -81,6 +84,7 @@ async function initKpis() {
       @description,
       @type,
       @labels,
+      @isFavorite,
       @targetValue,
       @currentValue,
       @targetDate,
@@ -92,10 +96,11 @@ async function initKpis() {
     stmt.run({
       ...kpi,
       labels: kpi.labels,
+      isFavorite: kpi.isFavorite ? 1 : 0,
       targetDate: kpi.targetDate.toISOString(),
       currentDate: kpi.currentDate.toISOString(),
     });
   }
 }
 
-// initKpis();
+initKpis();
