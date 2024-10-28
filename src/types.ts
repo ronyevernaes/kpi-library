@@ -8,7 +8,7 @@ export enum AssetType {
 export interface Asset {
   id: number;
   name: string;
-  description?: string;
+  description: string;
   type: AssetType;
   labels?: string;
   createdAt: Date;

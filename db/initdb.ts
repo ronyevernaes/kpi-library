@@ -1,6 +1,6 @@
 const sql = require('better-sqlite3');
 
-const db = sql('./assets.db');
+const db = sql('../assets.db');
 
 const kpis = [
   {
@@ -98,4 +98,4 @@ async function initKpis() {
   }
 }
 
-initKpis();
+// initKpis();
