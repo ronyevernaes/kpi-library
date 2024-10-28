@@ -6,10 +6,13 @@ export enum AssetType {
 }
 
 export interface Asset {
-  id: string;
+  id: number;
   name: string;
   description?: string;
   type: AssetType;
+  labels?: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface Kpi extends Asset {
@@ -45,6 +48,7 @@ export interface User {
   username: string;
   email: string;
   area: Area;
+  favoriteAssets: Asset[];
   accessRequests: AccessRequest[];
 }
 
