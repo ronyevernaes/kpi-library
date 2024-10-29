@@ -3,7 +3,10 @@ import { AssetList } from "./components/asset-list";
 import { AssetType } from "../types";
 
 type Props = {
-  searchParams: { type?: AssetType };
+  searchParams: {
+    type?: AssetType,
+    search?: string
+  };
 };
 
 export default function Home({ searchParams  }: Props) {
@@ -17,7 +20,7 @@ export default function Home({ searchParams  }: Props) {
 
       <NavBar />
 
-      <AssetList type={searchParams.type} />
+      <AssetList type={searchParams.type} criteria={searchParams.search} />
     </div>
   );
 };

@@ -16,6 +16,10 @@ export const getAssets = async <T extends Asset>(
     SELECT *
     FROM assets
     WHERE (type = @type OR @type IS NULL AND isFavorite = 1)
+      AND (
+        @criteria IS NULL
+        OR name LIKE '%' || @criteria || '%' 
+        OR description LIKE '%' || @criteria || '%'
+      )
   `).all({ type, criteria });
 };
-

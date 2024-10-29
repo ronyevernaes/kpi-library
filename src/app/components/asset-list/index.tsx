@@ -7,10 +7,11 @@ import { Card } from "@/src/components/ui";
 
 type Props = {
   type?: AssetType;
+  criteria?: string;
 };
 
-export const AssetList: FC<Props> = async ({ type }) => {
-  const assets = await getAssets(type, '');
+export const AssetList: FC<Props> = async ({ type, criteria }) => {
+  const assets = await getAssets(type, criteria);
 
   return (
     <div className="grid gap-4 grid-cols-2">
