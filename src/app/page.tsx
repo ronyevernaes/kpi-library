@@ -11,7 +11,7 @@ type Props = {
 
 export default function Home({ searchParams  }: Props) {
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 w-2/3">
       <h1>Library</h1>
 
       <p className="text-center">Browse for assets needed to report and present analysis</p>
