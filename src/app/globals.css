@@ -22,7 +22,9 @@ input[type="text"] {
   @apply border border-slate-400 rounded-xl p-3;
 }
 
-.button {
+
+
+
   @apply rounded-md py-3 px-4 bg-slate-700 text-white;
 }
 
