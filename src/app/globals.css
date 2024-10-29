@@ -22,9 +22,14 @@ input[type="text"] {
   @apply border border-slate-400 rounded-xl p-3;
 }
 
-
-
-
+/* button {
   @apply rounded-md py-3 px-4 bg-slate-700 text-white;
 }
 
+.modal-overlay {
+  @apply fixed top-0 left-0 w-full h-full bg-black opacity-50 z-50;
+}
+
+.modal {
+  @apply fixed top-1/2 left-1/2 transform translate-y-1/2 -translate-x-1/2 w-full max-w-md p-6 bg-white rounded-md shadow-xl;
+} */
